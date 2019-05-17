@@ -1,7 +1,7 @@
 #include "tester.h"
 
 void Tester::execute() {
-    string equations[] = {
+    /*string equations[] = {
         "7/4*((3+1)*3)+3",
         "7/4*((2+-+--8)*2)+3",
         "2+(3)",
@@ -25,12 +25,43 @@ void Tester::execute() {
         -32.25,
         -86,
         -32310.75
+    };*/
+
+    string equations[] = {
+        "15+23",
+        "23-15",
+        "15+23-15",
+        "1-2",
+        "-1+2",
+        "3-8+2",
+        "-1",
+        "--1",
+        "2*4",
+        "19+-+++-++++++9",
+        "8*9+2-9/4",
+        "2^2"
+    };
+
+    float results[] = {
+        38,
+        8,
+        23,
+        -1,
+        1,
+        -3,
+        -1,
+        1,
+        8,
+        28,
+        71.75,
+        4
     };
 
     const unsigned int size = sizeof(equations) / sizeof(string);
     for (int i = 0; i < size; ++i) {
-        Operation* root = Operation::buildFromEquation(equations[i]);
+        Operation* root = Factory::buildFromEquation(equations[i]);
         float respuesta = root->operate();
+        cout<<respuesta<<endl;
         ASSERT(respuesta == results[i], "The solver is not working");
         cout << "Equation(" << i + 1 << ") solved" << endl;
     }

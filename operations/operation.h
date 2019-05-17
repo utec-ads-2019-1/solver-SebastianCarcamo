@@ -2,16 +2,16 @@
 #define OPERATION_H
 
 #include <string>
+#include <iostream>
 
 using namespace std;
 
 class Operation {
     protected:
         string equation;
+        Operation* childs[2];
               
-    public:  
-        static Operation* buildFromEquation(string equation);
-
+    public:
         inline string name() { return equation; }
 
         virtual float operate() = 0;

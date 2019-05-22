@@ -39,7 +39,8 @@ void Tester::execute() {
         "2*4",
         "19+-+++-++++++9",
         "8*9+2-9/4",
-        "2^2"
+        "2^2",
+        "a+1"
     };
 
     float results[] = {
@@ -54,7 +55,8 @@ void Tester::execute() {
         8,
         28,
         71.75,
-        4
+        4,
+        1
     };
 
     const unsigned int size = sizeof(equations) / sizeof(string);

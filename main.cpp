@@ -4,6 +4,8 @@
 
 using namespace std;
 
+map<string,float> mapa;
+
 int main(int argc, char const *argv[]) {
       Tester::execute();
       return EXIT_SUCCESS;

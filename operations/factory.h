@@ -13,13 +13,16 @@ using namespace std;
 #include "power.h"
 #include "constant.h"
 
+//TEST
+// cout << "left: " << equation.substr(0, position) << endl;
+// cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;
+
 class Factory {
     public:
         static Operation* buildFromEquation(string equation) {
 			int position = equation.find("+");
 			if (position != string::npos) {
-				cout << "left: " << equation.substr(0, position) << endl;
-				cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;
+
 				Operation* left = buildFromEquation(equation.substr(0, position));
 				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1)); 
 				return new Plus(left, right);
@@ -28,19 +31,15 @@ class Factory {
 			position = equation.find("-");
 
 			if (position != string::npos) {
-				cout << "left: " << equation.substr(0, position) << endl;
-				cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;
-				Operation* left = buildFromEquation(equation.substr(0, position));
-				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1)); 
-
+				
+				Operation* left = buildFromEquation(equation.substr(0, position)); 
+				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1));
 				return new Minus(left, right);
 			}
 
 			position = equation.find("*");
 
 			if (position != string::npos) {
-				cout << "left: " << equation.substr(0, position) << endl;
-				cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;
 				Operation* left = buildFromEquation(equation.substr(0, position));
 				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1)); 
 
@@ -50,8 +49,6 @@ class Factory {
 			position = equation.find("/");
 
 			if (position != string::npos) {	
-				cout << "left: " << equation.substr(0, position) << endl;
-				cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;			
 				Operation* left = buildFromEquation(equation.substr(0, position));
 				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1));
 				return new Divide(left, right);
@@ -59,9 +56,7 @@ class Factory {
 
 			position = equation.find("^");
 
-			if (position != string::npos) {	
-				cout << "left: " << equation.substr(0, position) << endl;
-				cout << "right: " << equation.substr(position + 1, equation.length() - 1) << endl;			
+			if (position != string::npos) {			
 				Operation* left = buildFromEquation(equation.substr(0, position));
 				Operation* right = buildFromEquation(equation.substr(position + 1, equation.length() - 1));
 				return new Power(left, right);
